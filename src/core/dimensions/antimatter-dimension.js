@@ -16,8 +16,6 @@ export function antimatterDimensionCommonMultiplier() {
   }
   multiplier = multiplier.timesEffectsOf(
     BreakInfinityUpgrade.totalAMMult,
-    BreakInfinityUpgrade.totalAMMult,
-    BreakInfinityUpgrade.totalAMMult,
     BreakInfinityUpgrade.currentAMMult,
     BreakInfinityUpgrade.achievementMult,
     BreakInfinityUpgrade.slowestChallengeMult,
@@ -364,7 +362,7 @@ class AntimatterDimensionState extends DimensionState {
    * @returns {Decimal}
    */
   get cost() {
-    return this.costScale.calculateCost(Math.floor(this.bought / 10) + this.costBumps).mul(player.break ? 1 : -1);
+    return this.costScale.calculateCost(Math.floor(this.bought / 10) + this.costBumps);
   }
 
   /** @returns {number} */

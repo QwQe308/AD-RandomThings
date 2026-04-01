@@ -27,6 +27,8 @@ export function getTickSpeedMultiplier() {
     InfinityUpgrade.galaxyBoost,
     InfinityUpgrade.galaxyBoost.chargedEffect,
     BreakInfinityUpgrade.galaxyBoost,
+    BreakInfinityUpgrade.galaxyBoost,
+    BreakInfinityUpgrade.galaxyBoost,
     TimeStudy(212),
     TimeStudy(232),
     Achievement(86),

@@ -39,9 +39,9 @@ export default {
         ],
         [
           BreakInfinityUpgrade.galaxyBoost,
+          BreakInfinityUpgrade.galaxyBoost,
+          BreakInfinityUpgrade.galaxyBoost,
           BreakInfinityUpgrade.currentAMMult,
-          BreakInfinityUpgrade.totalAMMult,
-          BreakInfinityUpgrade.totalAMMult,
           BreakInfinityUpgrade.totalAMMult,
         ],
       ];
