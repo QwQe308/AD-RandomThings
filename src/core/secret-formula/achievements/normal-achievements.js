@@ -3,13 +3,13 @@ import { DC } from "../../constants";
 export const normalAchievements = [
   {
     id: 11,
-    name: "You gotta start somewhere",
+    name: "You gotta start somewhere...?",
     description: "Buy a 1st Antimatter Dimension.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 12,
-    name: "100 antimatter is a lot",
+    name: "-100 antimatter is anti lot",
     description: "Buy a 2nd Antimatter Dimension.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
@@ -76,7 +76,7 @@ export const normalAchievements = [
   {
     id: 23,
     name: "The 9th Dimension is a lie",
-    get description() { return `Have exactly ${formatInt(99)} 8th Antimatter Dimensions.`; },
+    get description() { return `Have exactly ${formatInt(99)} 8th Antimatter Dimensions. (Of course it's a lie - maybe unreachable XD)`; },
     checkRequirement: () => AntimatterDimension(8).amount.eq(99),
     get reward() { return `8th Antimatter Dimensions are ${formatPercents(0.1)} stronger.`; },
     effect: 1.1
@@ -84,7 +84,7 @@ export const normalAchievements = [
   {
     id: 24,
     name: "Antimatter Apocalypse",
-    get description() { return `Get over ${format(DC.E80)} antimatter.`; },
+    get description() { return `Get over ${format(DC.E80)} antimatter... Or less than ${format(DC.E80.neg())} haha.`; },
     checkRequirement: () => Currency.antimatter.exponent >= 80,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
@@ -113,7 +113,7 @@ export const normalAchievements = [
     id: 28,
     name: "There's no point in doing that...",
     get description() {
-      return `Buy a single 1st Antimatter Dimension when you have over ${format(DC.E150)} of them.`;
+      return `Buy a single 1st Antimatter Dimension when you have over ${format(DC.E150)} or less than ${format(DC.E150.neg())} of them. Yes, both pointless.`;
     },
     checkRequirement: () => AntimatterDimension(1).amount.exponent >= 150,
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
@@ -122,8 +122,8 @@ export const normalAchievements = [
   },
   {
     id: 31,
-    name: "I forgot to nerf that",
-    get description() { return `Get any Antimatter Dimension multiplier over ${formatX(DC.E31)}.`; },
+    name: "I forgot to boost that",
+    get description() { return `Get any Antimatter Dimension multiplier less than ${formatX(DC.E31.neg())}.`; },
     checkRequirement: () => AntimatterDimensions.all.some(x => x.multiplier.exponent >= 31),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() { return `1st Antimatter Dimensions are ${formatPercents(0.05)} stronger.`; },
@@ -160,13 +160,13 @@ export const normalAchievements = [
   },
   {
     id: 35,
-    name: "Don't you dare sleep",
+    name: "Don't you dare antisleep",
     get description() {
       return PlayerProgress.realityUnlocked()
-        ? `Be offline for a period of over ${formatInt(6)} hours (real time).`
-        : `Be offline for a period of over ${formatInt(6)} hours.`;
+        ? `Be offline for a period of over ${formatInt(-6)} hours (real time).`
+        : `Be offline for a period of over ${formatInt(-6)} hours.`;
     },
-    checkRequirement: () => Date.now() - player.lastUpdate >= 21600000,
+    checkRequirement: () => Date.now() - player.lastUpdate >= -21600000,
     checkEvent: GAME_EVENT.GAME_TICK_BEFORE
   },
   {
@@ -201,8 +201,8 @@ export const normalAchievements = [
   },
   {
     id: 41,
-    name: "No DLC required",
-    get description() { return `Buy ${formatInt(16)} Infinity Upgrades.`; },
+    name: "DLC required",
+    get description() { return `Buy ${formatInt(16)} Infinity Upgrades. Is that possible?`; },
     checkRequirement: () => player.infinityUpgrades.size >= 16,
     checkEvent: [
       GAME_EVENT.INFINITY_UPGRADE_BOUGHT,
@@ -217,7 +217,7 @@ export const normalAchievements = [
     id: 42,
     name: "Super Sanic",
     get description() {
-      return `Have antimatter per second exceed your current antimatter above ${format(DC.E63)}.`;
+      return `Have antimatter per second exceed your current antimatter above ${format(DC.E63)}. Purely a challenge.`;
     },
     checkRequirement: () =>
       Currency.antimatter.exponent >= 63 &&
@@ -226,10 +226,10 @@ export const normalAchievements = [
   },
   {
     id: 43,
-    name: "How the antitables have turned..",
+    name: "How the antitables have turned in matter dimensions..",
     description:
       "Get the 8th Antimatter Dimension multiplier to be highest, 7th Antimatter Dimension multiplier " +
-      " second highest, etc.",
+      " second highest, etc. You know how to do that.",
     checkRequirement: () => {
       const multipliers = Array.range(1, 8).map(tier => AntimatterDimension(tier).multiplier);
       for (let i = 0; i < multipliers.length - 1; i++) {
